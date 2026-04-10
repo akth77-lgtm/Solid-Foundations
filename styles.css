@@ -135,19 +135,45 @@ a {
 .theme-switcher {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  gap: 0.45rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 10px;
+  background: rgba(var(--surface-rgb), 0.28);
+  border: 1px solid rgba(var(--primary-rgb), 0.07);
+=======
+>>>>>>> c79426216229995b65f3bc69cb669fe0cfc4a4bb
   gap: 0.7rem;
   padding: 0.35rem 0.6rem;
   border-radius: 12px;
   background: rgba(var(--surface-rgb), 0.35);
   border: 1px solid rgba(var(--primary-rgb), 0.08);
+<<<<<<< HEAD
+=======
+>>>>>>> 03142da3e40fedf21a3563f60ef285221754e638
+>>>>>>> c79426216229995b65f3bc69cb669fe0cfc4a4bb
 }
 
 .theme-switcher-label {
   display: inline-flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 0.35rem;
   color: var(--primary);
   font-size: 0.9rem;
+=======
+<<<<<<< HEAD
+  gap: 0.2rem;
+  color: var(--primary);
+  font-size: 0.85rem;
+=======
+  gap: 0.35rem;
+  color: var(--primary);
+  font-size: 0.9rem;
+>>>>>>> 03142da3e40fedf21a3563f60ef285221754e638
+>>>>>>> c79426216229995b65f3bc69cb669fe0cfc4a4bb
   font-weight: 600;
   margin: 0;
   white-space: nowrap;
@@ -156,15 +182,33 @@ a {
 .theme-options {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 0.45rem;
+=======
+<<<<<<< HEAD
+  gap: 0.3rem;
+=======
+  gap: 0.45rem;
+>>>>>>> 03142da3e40fedf21a3563f60ef285221754e638
+>>>>>>> c79426216229995b65f3bc69cb669fe0cfc4a4bb
 }
 
 .theme-dot {
   --swatch-primary: #0A3D62;
   --swatch-secondary: #1E6FA8;
   --swatch-surface: #E5E5E5;
+<<<<<<< HEAD
   width: 26px;
   height: 26px;
+=======
+<<<<<<< HEAD
+  width: 22px;
+  height: 22px;
+=======
+  width: 26px;
+  height: 26px;
+>>>>>>> 03142da3e40fedf21a3563f60ef285221754e638
+>>>>>>> c79426216229995b65f3bc69cb669fe0cfc4a4bb
   border: none;
   border-radius: 50%;
   padding: 0;
