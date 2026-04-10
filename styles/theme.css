@@ -1,8 +1,10 @@
 /*
-  Central color reference for the entire site.
-  Update these five values only to change the website palette globally.
+  Central theme packs for the site.
+  Users can switch between these palettes from the navbar.
 */
-:root {
+:root,
+:root[data-theme="trust"] {
+  color-scheme: light;
   --color-primary: #0A3D62;
   --color-secondary: #1E6FA8;
   --color-surface: #E5E5E5;
@@ -14,7 +16,51 @@
   --surface-rgb: 229, 229, 229;
   --text-rgb: 74, 74, 74;
   --white-rgb: 255, 255, 255;
+}
 
+:root[data-theme="build"] {
+  --color-primary: #000000;
+  --color-secondary: #F57C00;
+  --color-surface: #757575;
+  --color-text: #4A4A4A;
+  --color-white: #FFFFFF;
+
+  --primary-rgb: 0, 0, 0;
+  --secondary-rgb: 245, 124, 0;
+  --surface-rgb: 117, 117, 117;
+  --text-rgb: 74, 74, 74;
+  --white-rgb: 255, 255, 255;
+}
+
+:root[data-theme="modern"] {
+  --color-primary: #34495E;
+  --color-secondary: #2ECC71;
+  --color-surface: #BDC3C7;
+  --color-text: #34495E;
+  --color-white: #FFFFFF;
+
+  --primary-rgb: 52, 73, 94;
+  --secondary-rgb: 46, 204, 113;
+  --surface-rgb: 189, 195, 199;
+  --text-rgb: 52, 73, 94;
+  --white-rgb: 255, 255, 255;
+}
+
+:root[data-theme="abuwaleed"] {
+  --color-primary: #7B1E6C;
+  --color-secondary: #C64D8C;
+  --color-surface: #F0B633;
+  --color-text: #4A4A4A;
+  --color-white: #FFFFFF;
+
+  --primary-rgb: 123, 30, 108;
+  --secondary-rgb: 198, 77, 140;
+  --surface-rgb: 240, 182, 51;
+  --text-rgb: 74, 74, 74;
+  --white-rgb: 255, 255, 255;
+}
+
+:root {
   /* Backward-compatible aliases used across the current styles */
   --primary: var(--color-primary);
   --secondary: var(--color-secondary);
