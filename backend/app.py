@@ -47,6 +47,10 @@ def serve_static_files(filename):
     if filename.startswith("images/"):
         return send_from_directory(root_dir, filename)
 
+    # Serve shared style assets from the styles/ folder.
+    if filename.startswith("styles/"):
+        return send_from_directory(root_dir, filename)
+
     # Serve whitelisted top-level static files (HTML, CSS, JS, favicon)
     if filename in allowed:
         return send_from_directory(root_dir, filename)

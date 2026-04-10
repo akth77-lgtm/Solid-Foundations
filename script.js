@@ -8,6 +8,11 @@ const translations = {
     nav_quality: "الجودة",
     nav_contact: "تواصل معنا",
     nav_cta: "اطلب استشارة",
+    theme_label: "الباقة",
+    theme_trust: "الثقة والاحتراف",
+    theme_build: "البناء والقوة",
+    theme_modern: "الهندسة الحديثة",
+    theme_abuwaleed: "باقة أبو الوليد",
     hero_eyebrow: "الأسس الصلبة",
     hero_title: "الأسس الصلبة.. حيث تلتقي الثقة الهندسية بالرؤية المستقبلية",
     hero_subtitle: "نبني الواقع بمعايير عالمية، لنضع حجر الأساس لمشاريع وطنية مستدامة",
@@ -148,6 +153,11 @@ const translations = {
     nav_quality: "Quality",
     nav_contact: "Contact",
     nav_cta: "Request a Consultation",
+    theme_label: "Theme",
+    theme_trust: "Trust & Professionalism",
+    theme_build: "Build & Strength",
+    theme_modern: "Modern Engineering",
+    theme_abuwaleed: "Abu Alwaleed",
     hero_eyebrow: "Aloss Asslbah",
     hero_title: "Where Engineering Precision Meets Future Vision",
     hero_subtitle: "Constructing reality with global standards to lay the cornerstone for sustainable national projects",
@@ -283,6 +293,8 @@ const translations = {
 let revealObserver;
 let counterObserver;
 const LANG_STORAGE_KEY = "preferredLanguage";
+const THEME_STORAGE_KEY = "preferredTheme";
+const VALID_THEMES = ["trust", "build", "modern", "abuwaleed"];
 
 function getStoredLanguage() {
   try {
@@ -299,6 +311,43 @@ function persistLanguage(lang) {
   } catch (error) {
     // Ignore storage failures (e.g., private mode restrictions).
   }
+}
+
+function getStoredTheme() {
+  try {
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return VALID_THEMES.includes(stored) ? stored : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function persistTheme(theme) {
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (error) {
+    // Ignore storage failures (e.g., private mode restrictions).
+  }
+}
+
+function applyTheme(theme) {
+  const safeTheme = VALID_THEMES.includes(theme) ? theme : "trust";
+  const html = document.documentElement;
+  const body = document.body;
+
+  html.setAttribute("data-theme", safeTheme);
+  if (body) {
+    body.setAttribute("data-theme", safeTheme);
+  }
+
+  document.querySelectorAll("[data-theme-option]").forEach((button) => {
+    const isActive = button.getAttribute("data-theme-option") === safeTheme;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  persistTheme(safeTheme);
+  return safeTheme;
 }
 
 function handleScroll() {
@@ -325,14 +374,18 @@ function handleScroll() {
 function initUI() {
   const elements = document.querySelectorAll("[data-i18n]");
   const placeholders = document.querySelectorAll("[data-i18n-placeholder]");
+  const titleElements = document.querySelectorAll("[data-i18n-title]");
   const langToggle = document.querySelector("[data-lang-toggle]");
+  const themeButtons = document.querySelectorAll("[data-theme-option]");
   const html = document.documentElement;
   const body = document.body;
   const ltrStylesheet = document.getElementById("bootstrap-ltr");
   const rtlStylesheet = document.getElementById("bootstrap-rtl");
 
   const initialLang = html.getAttribute("lang") === "en" ? "en" : "ar";
+  const initialTheme = html.getAttribute("data-theme") || "trust";
   let currentLang = getStoredLanguage() || initialLang;
+  let currentTheme = getStoredTheme() || initialTheme;
 
   function setLanguage(lang) {
     currentLang = lang;
@@ -350,6 +403,14 @@ function initUI() {
       const key = element.getAttribute("data-i18n-placeholder");
       if (dictionary[key]) {
         element.setAttribute("placeholder", dictionary[key]);
+      }
+    });
+
+    titleElements.forEach((element) => {
+      const key = element.getAttribute("data-i18n-title");
+      if (dictionary[key]) {
+        element.setAttribute("title", dictionary[key]);
+        element.setAttribute("aria-label", dictionary[key]);
       }
     });
 
@@ -381,6 +442,16 @@ function initUI() {
     langToggle.dataset.bound = "true";
   }
 
+  themeButtons.forEach((button) => {
+    if (!button.dataset.bound) {
+      button.addEventListener("click", () => {
+        currentTheme = applyTheme(button.getAttribute("data-theme-option"));
+      });
+      button.dataset.bound = "true";
+    }
+  });
+
+  currentTheme = applyTheme(currentTheme);
   setLanguage(currentLang);
 
   if (!revealObserver) {
