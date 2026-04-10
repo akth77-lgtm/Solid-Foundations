@@ -1,0 +1,33 @@
+/*
+  Central color reference for the entire site.
+  Update these five values only to change the website palette globally.
+*/
+:root {
+  --color-primary: #0A3D62;
+  --color-secondary: #1E6FA8;
+  --color-surface: #E5E5E5;
+  --color-text: #4A4A4A;
+  --color-white: #FFFFFF;
+
+  --primary-rgb: 10, 61, 98;
+  --secondary-rgb: 30, 111, 168;
+  --surface-rgb: 229, 229, 229;
+  --text-rgb: 74, 74, 74;
+  --white-rgb: 255, 255, 255;
+
+  /* Backward-compatible aliases used across the current styles */
+  --primary: var(--color-primary);
+  --secondary: var(--color-secondary);
+  --accent: var(--color-secondary);
+  --light-bg: var(--color-surface);
+  --white: var(--color-white);
+  --text-color: var(--color-text);
+
+  --shadow-light: 0 4px 15px rgba(var(--primary-rgb), 0.08);
+  --shadow-medium: 0 12px 35px rgba(var(--primary-rgb), 0.14);
+  --shadow-heavy: 0 20px 50px rgba(var(--primary-rgb), 0.18);
+
+  --radius: 16px;
+  --radius-lg: 24px;
+  --duration: 0.3s;
+}
